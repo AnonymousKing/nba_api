@@ -3,8 +3,8 @@ from nba_api.live.library.http import NBAStatsHTTP
 
 class GameOdds(Endpoint):
     endpoint_url = 'gameOdds/{game_id}.json'
-    #expected_data = {'AvailableVideo': ['VIDEO_AVAILABLE_FLAG'], 'PlayByPlay': ['GAME_ID', 'EVENTNUM', 'EVENTMSGTYPE', 'EVENTMSGACTIONTYPE', 'PERIOD', 'WCTIMESTRING', 'PCTIMESTRING', 'HOMEDESCRIPTION', 'NEUTRALDESCRIPTION', 'VISITORDESCRIPTION', 'SCORE', 'SCOREMARGIN']}
-    
+    expected_data = {'odds': {'gameId', 'team', 'odds', 'suspended'}}
+
     nba_response = None
     data_sets = None
     player_stats = None

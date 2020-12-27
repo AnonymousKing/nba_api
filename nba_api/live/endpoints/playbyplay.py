@@ -2,8 +2,14 @@ from nba_api.live.endpoints._base import Endpoint
 from nba_api.live.library.http import NBAStatsHTTP
 class PlayByPlay(Endpoint):
     endpoint_url = 'playbyplay/playbyplay_{game_id}.json'
-    #expected_data = {'AvailableVideo': ['VIDEO_AVAILABLE_FLAG'], 'PlayByPlay': ['GAME_ID', 'EVENTNUM', 'EVENTMSGTYPE', 'EVENTMSGACTIONTYPE', 'PERIOD', 'WCTIMESTRING', 'PCTIMESTRING', 'HOMEDESCRIPTION', 'NEUTRALDESCRIPTION', 'VISITORDESCRIPTION', 'SCORE', 'SCOREMARGIN']}
-    
+    expected_data = {'meta', {'version', 'code','request', 'time'}, 
+        'game', {'gameId', 'actions', ['actionNumber','clock','timeActual','period','periodType','actionType',
+        'subType','qualifiers','personId','possession','scoreHome','scoreAway','edited','orderNumber','description',
+        'personIdsFilter','teamId','descriptor','jumpBallRecoverdPersonId','playerName','playerNameI','jumpBallWonPlayerName',
+        'jumpBallLostPlayerName','turnoverTotal','stealPlayerName','stealTotal','x','y','shotDistance','shotResult',
+        'shotActionNumber','reboundDefensiveTotal','pointsTotal','assistPersonId','officialId','foulTechnicalTotal',
+        'foulDrawnPlayerName','foulDrawnPersonId','subsInPersonId','blockPlayerName','blockPersonId','blockTotal','value']}}
+
     nba_response = None
     data_sets = None
     player_stats = None
