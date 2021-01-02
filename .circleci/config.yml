@@ -1,4 +1,6 @@
-version: 2.0
+version: 2.1
+orbs:
+  snyk: snyk/snyk@0.0.12
 
 flake8-steps: &steps
   - checkout
@@ -12,22 +14,24 @@ flake8-steps: &steps
   #- run: pytest
   - run: pip install --user pytest
   - run: python -m pytest  tests/stats/library/playbyplay/test_play_by_play_regex.py
-  
+  - run: npm install -q
+  - snyk/scan
+
 jobs:
-  Python34:
-    docker:
-      - image: circleci/python:3.4
-    steps: *steps
+#  Python34:
+#    docker:
+#      - image: circleci/python:3.4
+#    steps: *steps
 
-  Python35:
-    docker:
-      - image: circleci/python:3.5
-    steps: *steps
+#  Python35:
+#    docker:
+#      - image: circleci/python:3.5
+#    steps: *steps
 
-  Python36:
-    docker:
-      - image: circleci/python:3.6
-    steps: *steps
+#  Python36:
+#    docker:
+#      - image: circleci/python:3.6
+#    steps: *steps
 
   Python37:
     docker:
@@ -38,7 +42,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - Python34
-      - Python35
-      - Python36
+#      - Python34
+#      - Python35
+#      - Python36
       - Python37
